@@ -19,15 +19,18 @@ html {
 }
 
 body {
-
+  background: $pink;
+  font-family: $font-text-medium;
+  color: $pale-purple;
 }
 
 h1 {
-  font-size: 8rem;
+  font-size: 3rem;
 }
 
 p {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  letter-spacing: .2rem;
 }
 
 p::selection {

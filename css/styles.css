@@ -71,8 +71,44 @@ html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 62.5%; }
 
+body {
+  background: #FBCDDC;
+  font-family: "AvenirLT-Medium";
+  color: #716396; }
+
 h1 {
-  font-size: 8rem; }
+  font-size: 3rem; }
 
 p {
-  font-size: 2rem; }
+  font-size: 1.5rem;
+  letter-spacing: .2rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(270px, 1fr));
+  grid-template-rows: repeat(4, minmax(270px, 1fr));
+  grid-template-areas: "a b b c" "a d e f" "g g e h" "i j j h";
+  width: 80%;
+  margin: 0 auto; }
+  .grid .grid-item {
+    border: 1px solid black; }
+    .grid .grid-item:nth-child(1) {
+      grid-area: a; }
+    .grid .grid-item:nth-child(2) {
+      grid-area: b; }
+    .grid .grid-item:nth-child(3) {
+      grid-area: c; }
+    .grid .grid-item:nth-child(4) {
+      grid-area: d; }
+    .grid .grid-item:nth-child(5) {
+      grid-area: e; }
+    .grid .grid-item:nth-child(6) {
+      grid-area: f; }
+    .grid .grid-item:nth-child(7) {
+      grid-area: g; }
+    .grid .grid-item:nth-child(8) {
+      grid-area: h; }
+    .grid .grid-item:nth-child(9) {
+      grid-area: i; }
+    .grid .grid-item:nth-child(10) {
+      grid-area: j; }
