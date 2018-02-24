@@ -45,6 +45,16 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@font-face {
+  font-family: 'AvenirLT-Medium';
+  src: url("3078BB_0_0.eot");
+  src: url("3078BB_0_0.eot?#iefix") format("embedded-opentype"), url("3078BB_0_0.woff2") format("woff2"), url("3078BB_0_0.woff") format("woff"); }
+
+@font-face {
+  font-family: 'AvenirLT-Light';
+  src: url("3078BB_1_0.eot");
+  src: url("3078BB_1_0.eot?#iefix") format("embedded-opentype"), url("3078BB_1_0.woff2") format("woff2"), url("3078BB_1_0.woff") format("woff"); }
+
 * {
   -webkit-font-smoothing: antialiased; }
 
