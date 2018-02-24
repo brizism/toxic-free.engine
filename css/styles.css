@@ -85,13 +85,14 @@ p {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(270px, 1fr));
-  grid-template-rows: repeat(4, minmax(270px, 1fr));
+  grid-template-columns: repeat(4, 250px);
+  grid-template-rows: repeat(4, 250px);
   grid-template-areas: "a b b c" "a d e f" "g g e h" "i j j h";
-  width: 80%;
+  width: 880px;
   margin: 0 auto; }
   .grid .grid-item {
-    border: 1px solid black; }
+    border: 1px solid #EA5A4B;
+    outline: 1px solid #EA5A4B; }
     .grid .grid-item:nth-child(1) {
       grid-area: a; }
     .grid .grid-item:nth-child(2) {
