@@ -1,3 +1,8 @@
+svg {
+  width: 70%;
+  height: 70%;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 250px);
@@ -11,6 +16,9 @@
   margin: 0 auto;
 
   .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid $orange;
     outline: 1px solid $orange;
 
@@ -24,6 +32,11 @@
     &:nth-child(8) { grid-area: h; }
     &:nth-child(9) { grid-area: i; }
     &:nth-child(10) { grid-area: j; }
+
+    &:hover{
+      background: $navy-blue;
+      cursor: pointer;
+    }
   }
 }
 

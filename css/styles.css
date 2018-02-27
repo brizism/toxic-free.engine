@@ -83,6 +83,10 @@ p {
   font-size: 1.8rem;
   letter-spacing: .2rem; }
 
+svg {
+  width: 70%;
+  height: 70%; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 250px);
@@ -91,6 +95,9 @@ p {
   width: 1000px;
   margin: 0 auto; }
   .grid .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid #EA5A4B;
     outline: 1px solid #EA5A4B; }
     .grid .grid-item:nth-child(1) {
@@ -113,6 +120,9 @@ p {
       grid-area: i; }
     .grid .grid-item:nth-child(10) {
       grid-area: j; }
+    .grid .grid-item:hover {
+      background: #191E50;
+      cursor: pointer; }
 
 header {
   text-align: center;
