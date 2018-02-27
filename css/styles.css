@@ -120,9 +120,21 @@ svg {
       grid-area: i; }
     .grid .grid-item:nth-child(10) {
       grid-area: j; }
+    .grid .grid-item .category {
+      align-self: flex-end;
+      position: absolute;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: .6rem;
+      font-family: "AvenirLT-Light";
+      padding-bottom: 1.3rem;
+      color: white;
+      opacity: 0; }
     .grid .grid-item:hover {
       background: #191E50;
       cursor: pointer; }
+    .grid .grid-item:hover .category {
+      opacity: 1; }
 
 header {
   text-align: center;

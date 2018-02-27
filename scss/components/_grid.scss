@@ -33,9 +33,25 @@ svg {
     &:nth-child(9) { grid-area: i; }
     &:nth-child(10) { grid-area: j; }
 
-    &:hover{
+    .category {
+      align-self: flex-end;
+      position: absolute;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: .6rem;
+      font-family: $font-text-light;
+      padding-bottom: 1.3rem;
+      color: white;
+      opacity: 0;
+    }
+
+    &:hover {
       background: $navy-blue;
       cursor: pointer;
+    }
+
+    &:hover .category {
+      opacity: 1;
     }
   }
 }
