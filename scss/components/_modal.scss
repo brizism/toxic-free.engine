@@ -1,0 +1,44 @@
+.products-modal {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background: red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  text-align: center;
+  z-index: 1;
+  animation: fadeIn .2s;
+
+  .products-content {
+    width: 80%;
+    height: 100%;
+    background: aliceblue;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    animation: slideIn .4s cubic-bezier(0.61, 1.02, 1, 1);
+
+    .modal-header {
+      padding: 2rem;
+
+      .close {
+        font-size: 4rem;
+        position: absolute;
+        right: 3rem;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {opacity: 0}
+  to {opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -800px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
