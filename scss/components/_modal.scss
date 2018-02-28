@@ -23,10 +23,11 @@
     .modal-header {
       padding: 2rem;
 
-      .close {
+      #close {
         font-size: 4rem;
         position: absolute;
         right: 3rem;
+        cursor: pointer;
       }
     }
   }
