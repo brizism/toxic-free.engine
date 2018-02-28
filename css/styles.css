@@ -173,6 +173,7 @@ header {
     position: fixed;
     bottom: 0;
     left: 10%;
+    overflow: auto;
     animation: slideIn 0.4s cubic-bezier(0.61, 1.02, 1, 1); }
     .products-modal .products-content .modal-header {
       padding: 2rem; }
