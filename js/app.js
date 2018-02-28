@@ -1,3 +1,6 @@
+// Init makeup
+const makeup = new Makeup();
+
 const mascara = document.getElementById('mascara');
 const eye_shadow = document.getElementById('eye_shadow');
 const blush = document.getElementById('blush');
@@ -11,7 +14,13 @@ const eye_liner = document.getElementById('eye_liner');
 
 const categories = [mascara, eye_shadow, blush, nail_polish, foundation, lipstick, lip_liner, bronzer, eyebrows, eye_liner];
 
-
+categories.forEach(category => {
+  category.addEventListener('click', () => {
+    makeup.getMakeup(category.id)
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  })
+});
 
 
 
