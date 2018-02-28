@@ -6,15 +6,23 @@ class UI {
 
   // Display products in UI
   showMakeup(categories){
+    console.log(categories);
     this.modal.style.display = 'block';
+    let output = `
+      <div class="modal-header">
+        <span id="close">&times;</span>
+        <h1>${categories[0].product_type.charAt(0).toUpperCase() + categories[0].product_type.slice(1)}</h1>
+      </div>
+    `
+    // Loop through categories
     categories.forEach(category => {
-      this.products.innerHTML = `
-        <div class="modal-header">
-          <span id="close">&times;</span>
-          <h1>${category.product_type.charAt(0).toUpperCase() + category.product_type.slice(1)}</h1>
+      output += `
+        <div class="modal-body">
+          <p>${category.name}</p>
         </div>
       `
     })
+    this.products.innerHTML = output;
 
     this.closeModal();
   }
