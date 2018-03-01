@@ -12,6 +12,16 @@ class UI {
       <div class="products-modal__header">
         <span id="close">&times;</span>
         <h1><span>${categories[0].product_type.split('_').join(' ')}</span></h1>
+        <div class="products-modal__filter">
+          <div class="products-modal__category">
+            <p>Category</p>
+            <select>${this.filterCategory(categories).map(category => `<option value="${category}">${category}</option>`)}</select>
+          </div>
+          <div class="products-modal__tag">
+            <p>Tag</p>
+            <select id="category"></select>
+          </div>
+        </div>
       </div>
       <div class="products-modal__wrapper">
     `
@@ -27,6 +37,13 @@ class UI {
     this.products.innerHTML = output;
 
     this.closeModal();
+  }
+
+  filterCategory(categories){
+    const filterCategories = categories
+      .map(i => i.category)
+      .filter((curr, i, arr) => curr !== null && arr.indexOf(curr) == i);
+    return filterCategories
   }
 
   closeModal(){
