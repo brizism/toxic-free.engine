@@ -15,7 +15,7 @@ svg {
   width: 1000px;
   margin: 0 auto;
 
-  .grid-item {
+  &__item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ svg {
     &:nth-child(9) { grid-area: i; }
     &:nth-child(10) { grid-area: j; }
 
-    .category {
+    &__category {
       align-self: flex-end;
       position: absolute;
       font-size: 1.5rem;
@@ -50,7 +50,7 @@ svg {
       cursor: pointer;
     }
 
-    &:hover .category {
+    &:hover &__category {
       opacity: 1;
     }
   }
