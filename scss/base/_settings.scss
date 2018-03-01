@@ -3,3 +3,13 @@ $pink: #FBCDDC;
 $orange: #EA5A4B;
 $navy-blue: #191E50;
 $pale-purple: #716396;
+
+// Mixins
+@mixin span-background {
+  background: $navy-blue;
+  color: white;
+  font-size: 2rem;
+  padding: .7rem;
+  letter-spacing: 1rem;
+  padding-left: 1.7rem;
+}

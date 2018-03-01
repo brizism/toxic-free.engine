@@ -1,17 +1,12 @@
-header {
+.header {
   text-align: center;
   padding: 8rem 0;
 
-  h1 {
+  &__logo {
     margin-bottom: 6rem;
   }
 
-  .logo span {
-    background: $navy-blue;
-    color: white;
-    font-size: 2rem;
-    padding: .7rem;
-    letter-spacing: 1rem;
-    padding-left: 1.7rem;
+  &__logo span {
+    @include span-background;
   }
 }
