@@ -19,7 +19,7 @@ class UI {
           </div>
           <div class="products-modal__tag">
             <p>Tag</p>
-            <select id="category"></select>
+            <select>${this.filterTag(categories).map(tag => `<option value="${tag}">${tag}</option>`)}</select>
           </div>
         </div>
       </div>
@@ -44,6 +44,15 @@ class UI {
       .map(i => i.category)
       .filter((curr, i, arr) => curr !== null && arr.indexOf(curr) == i);
     return filterCategories
+  }
+
+  filterTag(tags){
+    const filterTags = tags
+      .map(i => i.tag_list)
+      .filter((curr, i, arr) => curr.length > 1)
+    const allTags = [].concat(...filterTags)
+      .filter((curr, i, arr) => arr.indexOf(curr) == i)
+    return allTags;
   }
 
   closeModal(){
