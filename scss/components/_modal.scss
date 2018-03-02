@@ -52,6 +52,53 @@
         }
       }
     }
+
+    &__filter {
+      display: flex;
+      justify-content: space-evenly;
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 100px;
+      margin-bottom: 40px;
+      align-items: center;
+
+      p {
+        color: $navy-blue;
+      }
+    }
+
+    &__category,
+    &__tag {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin-right: 1rem;
+        color: $navy-blue;
+      }
+
+      select {
+        background: $orange;
+        border: 1px solid transparent;
+        border-radius: 0;
+        -webkit-appearance: none;
+        padding: 10px;
+        font-size: 17px;
+        letter-spacing: 2px;
+        display: inline-block;
+        min-width: 75px;
+        background-image: url(../img/arrow.svg);
+        background-repeat: no-repeat;
+        background-position: 95% 60%;
+        background-size: 15px;
+        color: white;
+        padding-right: 35px;
+        padding-left: 10px;
+      }
+    }
+
+
 }
 
 // Animations
