@@ -26,7 +26,7 @@
         padding: 2rem;
 
         h1 span {
-          @include span-background;
+          @include span-bg--medium;
         }
 
         #close {
