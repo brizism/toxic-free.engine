@@ -7,6 +7,27 @@
   }
 
   &__logo span {
-    @include span-background;
+    @include span-bg;
+  }
+
+  @media screen and (max-width: $break-medium){
+    padding: 6rem 1rem;
+
+    &__logo {
+      margin-bottom: 3rem;
+    }
+
+    &__logo span {
+      @include span-bg--medium;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 2.5rem;
+    }
   }
 }
+
+
+
+  
