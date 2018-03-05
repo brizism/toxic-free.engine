@@ -1,7 +1,7 @@
 class UI {
   constructor(){
     this.products = document.getElementById('products-content');
-    this.modal = document.getElementById('products-modal')
+    this.modal = document.getElementById('products-modal');
   }
 
   // Display products in UI
@@ -11,22 +11,26 @@ class UI {
     let output = `
       <div class="products-modal__header">
         <span id="close">&times;</span>
-        <h1><span>${categories[0].product_type.split('_').join(' ')}</span></h1>
+        <h1 id="product-modal__title" class="${categories[0].product_type}"><span>${categories[0].product_type.split('_').join(' ')}</span></h1>
         <div class="products-modal__filter">
+          <p>Filter by:</p>
           <div class="products-modal__category">
             <p>Category</p>
-            <select>${this.filterCategory(categories).map(category => `<option value="${category}">${category}</option>`)}</select>
+            <select id="category">
+              <option value="all" selected>all</option>
+              ${this.filterCategory(categories).map(category => `<option value="${category}">${category}</option>`)}
+            </select>
           </div>
           <div class="products-modal__tag">
             <p>Tag</p>
-            <select>${this.filterTag(categories).map(tag => `<option value="${tag}">${tag}</option>`)}</select>
+            <select id="tag">${this.filterTag(categories).map(tag => `<option value="${tag}">${tag}</option>`)}</select>
           </div>
         </div>
       </div>
       <div class="products-modal__wrapper">
     `
     // Loop through categories
-    categories.forEach(category => {
+    categories.map(category => {
       output += `
         <div class="products-modal__body">
           <p>${category.name}</p>
@@ -53,6 +57,23 @@ class UI {
     const allTags = [].concat(...filterTags)
       .filter((curr, i, arr) => arr.indexOf(curr) == i)
     return allTags;
+  }
+
+  getCategoryValue(){
+    const product_type = document.getElementById('product-modal__title').getAttribute('class');
+    let tag = document.getElementById('category').addEventListener('change', (e) => {
+      const searchTag = e.target.value;
+      makeup.getMakeupByCategory(searchTag, product_type)
+      .then(res => this.displayCategory(res.categoryProduct))
+      .catch(err => console.log(err))
+    })
+  }
+
+  displayCategory(categories){
+    //let modalWrapper = document.getElementsByClassName('products-modal__wrapper')[0].innerHTML = '';
+    //let selected = document.querySelector('option:checked').value;
+    
+    console.log(this.showMakeup(categories))
   }
 
   closeModal(){
