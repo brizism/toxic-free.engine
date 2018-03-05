@@ -23,7 +23,10 @@ class UI {
           </div>
           <div class="products-modal__tag">
             <p>Tag</p>
-            <select id="tag">${this.filterTag(categories).map(tag => `<option value="${tag}">${tag}</option>`)}</select>
+            <select id="tag">
+              <option value="all" selected>all</option>
+              ${this.filterTag(categories).map(tag => `<option value="${tag}">${tag}</option>`)}
+            </select>
           </div>
         </div>
       </div>
@@ -61,11 +64,11 @@ class UI {
 
   getCategoryValue(){
     const product_type = document.getElementById('product-modal__title').getAttribute('class');
-    let tag = document.getElementById('category').addEventListener('change', (e) => {
+    document.getElementById('category').addEventListener('change', e => {
       const searchTag = e.target.value;
-      makeup.getMakeupByCategory(searchTag, product_type)
-      .then(res => this.displayCategory(res.categoryProduct))
-      .catch(err => console.log(err))
+      makeup.getMakeupByCategory(product_type, searchTag)
+        .then(res => this.displayCategory(res.categoryProduct))
+        .catch(err => console.log(err))
     })
   }
 
@@ -74,6 +77,17 @@ class UI {
     //let selected = document.querySelector('option:checked').value;
     
     console.log(this.showMakeup(categories))
+  }
+
+  getTagValue(){
+    const product_type = document.getElementById('product-modal__title').getAttribute('class');
+    document.getElementById('tag').addEventListener('change', e => {
+      const searchTag = e.target.value;
+      makeup.getMakeupByTag(product_type, searchTag)
+        .then(res => console.log(res.tagProduct))
+        .catch(err => console.log(err))
+      console.log(searchTag)
+    })
   }
 
   closeModal(){
