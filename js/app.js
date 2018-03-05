@@ -20,7 +20,8 @@ const categories = [mascara, eyeshadow, blush, nail_polish, foundation, lipstick
 categories.forEach(category => {
   category.addEventListener('click', () => {
     makeup.getMakeup(category.id)
-    .then(res => ui.showMakeup(res))
+    .then(res => ui.showMakeup(res.products))
+    .then(res => ui.getCategoryValue())
     .catch(err => console.log(err))
   })
 });
