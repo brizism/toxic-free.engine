@@ -22,6 +22,7 @@ categories.forEach(category => {
     makeup.getMakeup(category.id)
     .then(res => ui.showMakeup(res.products))
     .then(res => ui.getCategoryValue())
+    .then(res => console.log(ui.getTagValue()))
     .catch(err => console.log(err))
   })
 });
