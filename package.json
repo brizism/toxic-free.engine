@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile-sass": "node-sass scss/main.scss css/styles.css -w --source-map true --output-style compressed"
+    "compile-sass": "node-sass scss/main.scss css/styles.css -w --source-map true --output-style compressed",
+    "start": "browser-sync"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/brizism/toxic-free.engine#readme",
   "dependencies": {
     "node-sass": "^4.7.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6"
   }
 }
