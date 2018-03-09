@@ -98,6 +98,19 @@
       }
     }
 
+    @media screen and (max-width: $break-medium) {
+      background: pink;
+      
+      &__filter {
+        flex-direction: column;
+      }
+
+      &__category,
+      &__tag {
+        margin: 2rem 0 2rem 0;
+      }
+    }
+
 
 }
 
