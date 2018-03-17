@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile-sass": "node-sass scss/main.scss css/styles.css -w --source-map true --output-style compressed",
-    "start": "browser-sync"
+    "start": "browser-sync -w"
   },
   "repository": {
     "type": "git",
