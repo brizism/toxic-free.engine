@@ -23,7 +23,14 @@ $pale-purple: #716396;
   padding-left: 1.7rem;
 }
 
-// Media queries
-$break-small: 480px;
-$break-medium: 768px;
-$break-large: 1025px;
+// Breakpoints
+$bp-small: 30em; // 480px
+$bp-medium: 48em; // 768px
+$bp-large: 64em; // 1024px
+$bp-xlarge: 120em; // 1920px
+
+// Media Queries
+$mq-small: "(min-width: #{$bp-small})";
+$mq-medium: "(min-width: #{$bp-medium})";
+$mq-large: "(min-width: #{$bp-large})";
+$mq-xlarge: "(min-width: #{$bp-xlarge})";
