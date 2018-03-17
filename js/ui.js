@@ -37,6 +37,9 @@ class UI {
       output += `
         <div class="products-modal__body">
           <p>${category.name}</p>
+          <div class="products-modal__img">
+            <img src="${category.image_link}" alt="${category.name}"/>
+          </div>
         </div>
       `
     })
