@@ -10,7 +10,7 @@
     @include span-bg;
   }
 
-  @media screen and (max-width: $break-medium){
+  @media screen and (max-width: $bp-medium){
     padding: 6rem 1rem;
 
     &__logo {
