@@ -12,6 +12,10 @@ $pale-purple: #716396;
   padding: .7rem;
   letter-spacing: 1rem;
   padding-left: 1.7rem;
+
+  @media #{$mq-large} {
+    font-size: 1.7rem;
+  }
 }
 
 @mixin span-bg--medium {

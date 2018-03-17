@@ -75,7 +75,6 @@ class UI {
   displayCategory(categories){
     //let modalWrapper = document.getElementsByClassName('products-modal__wrapper')[0].innerHTML = '';
     //let selected = document.querySelector('option:checked').value;
-    
     console.log(this.showMakeup(categories))
   }
 

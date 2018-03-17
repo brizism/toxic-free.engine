@@ -4,6 +4,10 @@
 
   &__logo {
     margin-bottom: 6rem;
+
+    @media #{$mq-large} {
+      margin-bottom: 4rem;
+    }
   }
 
   &__logo span {
@@ -24,6 +28,14 @@
     p {
       font-size: 1.4rem;
       line-height: 2.5rem;
+    }
+  }
+
+  @media #{$mq-large} {
+    padding: 4rem 0;
+
+    p{
+      font-size: 1.5rem;
     }
   }
 }
