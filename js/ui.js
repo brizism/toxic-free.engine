@@ -40,6 +40,12 @@ class UI {
           <div class="products-modal__img">
             <img src="${category.image_link}" alt="${category.name}"/>
           </div>
+          <div class="products-modal__desc">
+            <p>${category.description}</p>
+          </div>
+          <div class="products-modal__buy">
+            <a href="${category.product_link}" target="_blank">Buy</a>
+          </div>
         </div>
       `
     })
@@ -76,9 +82,9 @@ class UI {
   }
 
   displayCategory(categories){
-    //let modalWrapper = document.getElementsByClassName('products-modal__wrapper')[0].innerHTML = '';
-    //let selected = document.querySelector('option:checked').value;
-    console.log(this.showMakeup(categories))
+    categories.forEach(category => {
+      console.log(category)
+    })
   }
 
   getTagValue(){
