@@ -51,6 +51,19 @@
           border: 1px solid $orange;
           outline: 1px solid $orange;
 
+          p:nth-child(1){ margin-bottom: .5rem; }
+          p:nth-child(2) {
+            font-size: 1.4rem;
+            letter-spacing: 0;
+
+            span {
+              font-style: italic;
+              letter-spacing: 0;
+              font-size: 1.4rem;
+              color: $orange;
+            }
+          }
+
           #{ $self }__img {
             width: 40rem;
             height: 30rem;
