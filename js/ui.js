@@ -41,7 +41,7 @@ class UI {
             <img src="${category.image_link}" alt="${category.name}"/>
           </div>
           <div class="products-modal__desc">
-            <p>${category.description}</p>
+            <p>${this.trucateText(category.description, 490)}</p>
           </div>
           <div class="products-modal__buy">
             <a href="${category.product_link}" target="_blank">Buy</a>
@@ -96,6 +96,13 @@ class UI {
         .catch(err => console.log(err))
       console.log(searchTag)
     })
+  }
+
+  // Truncate Text 
+  trucateText(text, limit){
+    const shortened = text.indexOf('', limit);
+    if(shortened == -1)return text;
+    return text.substring(0, shortened);
   }
 
   closeModal(){
