@@ -37,11 +37,12 @@ class UI {
       output += `
         <div class="products-modal__body">
           <p>${category.name}</p>
+          <p><span>by</span> ${category.brand}</p>
           <div class="products-modal__img">
             <img src="${category.image_link}" alt="${category.name}"/>
           </div>
           <div class="products-modal__desc">
-            <p>${this.trucateText(category.description, 490)}</p>
+            <p>${this.trucateText(category.description, 515)}</p>
           </div>
           <div class="products-modal__buy">
             <a href="${category.product_link}" target="_blank">Buy</a>
