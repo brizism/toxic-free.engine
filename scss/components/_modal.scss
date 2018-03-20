@@ -45,7 +45,7 @@
 
         #{ $self }__body {
           position: relative;
-          flex: 30%;
+          flex: 0 1 30%;
           height: auto;
           padding: 2rem 3rem 3rem 3rem;
           border: 1px solid $orange;
@@ -90,7 +90,7 @@
             bottom: 3rem;
             left: 50%;
             transform: translate(-50%);
-            
+
             a {
               background: $orange;
               padding: 1.5rem 6rem;
