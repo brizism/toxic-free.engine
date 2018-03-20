@@ -37,7 +37,7 @@ class UI {
       output += `
         <div class="products-modal__body">
           <p>${category.name}</p>
-          <p><span>by</span> ${category.brand}</p>
+          <p><span>by</span> <a href="${category.website_link}" target="_blank">${category.brand}</a></p>
           <div class="products-modal__img">
             <img src="${category.image_link}" alt="${category.name}"/>
           </div>
