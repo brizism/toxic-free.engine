@@ -30,7 +30,7 @@ class UI {
           </div>
         </div>
       </div>
-      <div class="products-modal__wrapper">
+      <div class="products-modal__wrapper" id="modal-body">
     `
     // Loop through categories
     categories.map(category => {
@@ -76,6 +76,11 @@ class UI {
     const product_type = document.getElementById('product-modal__title').getAttribute('class');
     document.getElementById('category').addEventListener('change', e => {
       const searchTag = e.target.value;
+      if(searchTag === 'all'){
+        makeup.getMakeup(product_type)
+          .then(res => this.displayCategory(res.products))
+          return;
+      }
       makeup.getMakeupByCategory(product_type, searchTag)
         .then(res => this.displayCategory(res.categoryProduct))
         .catch(err => console.log(err))
@@ -83,7 +88,26 @@ class UI {
   }
 
   displayCategory(categories){
-    
+    let output = '';
+    categories.map(category => {
+      output += `
+        <div class="products-modal__body">
+          <p>${category.name}</p>
+          <p><span>by</span> <a href="${category.website_link}" target="_blank">${category.brand}</a></p>
+          <div class="products-modal__img">
+            <img src="${category.image_link}" alt="${category.name}"/>
+          </div>
+          <div class="products-modal__desc">
+            <p>${this.trucateText(category.description, 515)}</p>
+          </div>
+          <div class="products-modal__buy">
+            <a href="${category.product_link}" target="_blank">Buy</a>
+          </div>
+        </div>
+      `
+    })
+
+    document.getElementById('modal-body').innerHTML = output;
   }
 
   getTagValue(){
