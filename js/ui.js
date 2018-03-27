@@ -72,16 +72,15 @@ class UI {
     return allTags;
   }
 
-  getCategoryValue(){
-    const product_type = document.getElementById('product-modal__title').getAttribute('class');
+  getCategoryValue(product){
     document.getElementById('category').addEventListener('change', e => {
       const searchTag = e.target.value;
       if(searchTag === 'all'){
-        makeup.getMakeup(product_type)
+        makeup.getMakeup(product)
           .then(res => this.displayCategory(res.products))
           return;
       }
-      makeup.getMakeupByCategory(product_type, searchTag)
+      makeup.getMakeupByCategory(product, searchTag)
         .then(res => this.displayCategory(res.categoryProduct))
         .catch(err => console.log(err))
     })
