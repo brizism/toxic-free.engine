@@ -83,9 +83,7 @@ class UI {
   }
 
   displayCategory(categories){
-    categories.forEach(category => {
-      console.log(category)
-    })
+    
   }
 
   getTagValue(){
@@ -101,6 +99,7 @@ class UI {
 
   // Truncate Text 
   trucateText(text, limit){
+    if(text == null)return;
     const shortened = text.indexOf('', limit);
     if(shortened == -1)return text;
     return text.substring(0, shortened);
