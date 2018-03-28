@@ -72,7 +72,7 @@ class UI {
     return allTags;
   }
 
-  getCategoryValue(product){
+  getCategoryValue(product, products){
     document.getElementById('category').addEventListener('change', e => {
       const searchTag = e.target.value;
       if(searchTag === 'all'){
@@ -80,13 +80,41 @@ class UI {
           .then(res => this.displayCategory(res.products))
           return;
       }
+      
+      // products.forEach(el => {
+      //   el.tag_list.forEach(tag => {
+      //     if(searchTag && tag){
+      //       console.log(searchTag);
+      //       console.log(tag);
+      //       makeup.getMakeupByTag(product, tag)
+      //         .then(res => this.displayCategory(res.tagProduct))
+      //         .catch(err => console.log(err))
+      //     }
+      //   })
+      // })
+      
       makeup.getMakeupByCategory(product, searchTag)
         .then(res => this.displayCategory(res.categoryProduct))
         .catch(err => console.log(err))
     })
   }
 
+  getTagValue(product, products){
+    document.getElementById('tag').addEventListener('change', e => {
+      const searchTag = e.target.value;
+      if(searchTag === 'all'){
+        makeup.getMakeup(product)
+          .then(res => this.displayCategory(res.products))
+          return;
+      }
+      makeup.getMakeupByTag(product, searchTag)
+        .then(res => this.displayCategory(res.tagProduct))
+        .catch(err => console.log(err))
+    })
+  }
+
   displayCategory(categories){
+    console.log(categories);
     let output = '';
     categories.map(category => {
       output += `
@@ -107,17 +135,6 @@ class UI {
     })
 
     document.getElementById('modal-body').innerHTML = output;
-  }
-
-  getTagValue(){
-    const product_type = document.getElementById('product-modal__title').getAttribute('class');
-    document.getElementById('tag').addEventListener('change', e => {
-      const searchTag = e.target.value;
-      makeup.getMakeupByTag(product_type, searchTag)
-        .then(res => console.log(res.tagProduct))
-        .catch(err => console.log(err))
-      console.log(searchTag)
-    })
   }
 
   // Truncate Text 
