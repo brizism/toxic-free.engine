@@ -48,6 +48,11 @@ svg { width: 70%; height: 70%; }
       color: white;
       opacity: 0;
 
+      @media screen and (max-width: $bp-small){
+        font-size: 1.4rem;
+        letter-spacing: .2rem;
+      }
+
       @media #{$mq-large} {
         font-size: 1.2rem;
         padding-bottom: 1rem;

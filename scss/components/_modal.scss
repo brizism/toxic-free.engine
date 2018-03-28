@@ -45,7 +45,7 @@
 
         #{ $self }__body {
           position: relative;
-          flex: 0 1 30%;
+          flex: 0 1 50%;
           height: auto;
           padding: 2rem 3rem 3rem 3rem;
           border: 1px solid $orange;
@@ -86,8 +86,8 @@
               max-height: 100%;
             }
 
-            @media screen and (max-width: $bp-small) {
-              width: 24rem;
+            @media screen and (max-width: $bp-large) {
+              width: 20rem;
 
               img {
                 max-width: 120%;
