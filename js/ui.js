@@ -72,49 +72,110 @@ class UI {
     return allTags;
   }
 
-  getCategoryValue(product, products){
+  getCategoryValue(product){
     document.getElementById('category').addEventListener('change', e => {
       const searchTag = e.target.value;
       if(searchTag === 'all'){
-        makeup.getMakeup(product)
+        makeup.getMakeup(product, searchTag)
           .then(res => this.displayCategory(res.products))
           return;
-      }
-      
-      // products.forEach(el => {
-      //   el.tag_list.forEach(tag => {
-      //     if(searchTag && tag){
-      //       console.log(searchTag);
-      //       console.log(tag);
-      //       makeup.getMakeupByTag(product, tag)
-      //         .then(res => this.displayCategory(res.tagProduct))
-      //         .catch(err => console.log(err))
-      //     }
-      //   })
-      // })
-      
+      }   
       makeup.getMakeupByCategory(product, searchTag)
         .then(res => this.displayCategory(res.categoryProduct))
         .catch(err => console.log(err))
+        return;
     })
   }
 
-  getTagValue(product, products){
+  getTagValue(product){
     document.getElementById('tag').addEventListener('change', e => {
       const searchTag = e.target.value;
       if(searchTag === 'all'){
-        makeup.getMakeup(product)
+        makeup.getMakeup(product, searchTag)
           .then(res => this.displayCategory(res.products))
           return;
       }
       makeup.getMakeupByTag(product, searchTag)
         .then(res => this.displayCategory(res.tagProduct))
         .catch(err => console.log(err))
+        return;
     })
   }
 
+  getBothValues(product){
+    const category = document.getElementById('category');
+    const tag = document.getElementById('tag');
+    category.addEventListener('change', e => {
+      const categoryValue = e.target.value;
+
+      tag.addEventListener('change', e => {
+        const tagValue = e.target.value;
+
+      if(categoryValue === 'all' && tagValue === 'all'){
+        makeup.getMakeup(product)
+          .then(res => this.displayCategory(res.products));
+          return;
+      }
+      makeup.getBoth(product, categoryValue, tagValue)
+        .then(res => this.displayCategory(res.categoryTagProducts))
+        .catch(err => console.log(err))
+        return;
+      })
+    })   
+  }
+
+  // getOptionValues(product){
+  //   const category = document.getElementById('category');
+  //   const tag = document.getElementById('tag');
+
+  //   category.addEventListener('change', e => {
+  //     const categoryValue = e.target.value;
+
+  //     tag.addEventListener('change', e => {
+  //       const tagValue = e.target.value;
+
+  //     if(categoryValue === 'all' && tagValue === 'all'){
+  //       makeup.getMakeup(product)
+  //         .then(res => this.displayCategory(res.products));
+  //         return;
+  //     }
+  //     makeup.getMakeupByCategory(product, categoryValue)
+  //       .then(res => this.displayCategory(res.products))
+  //       .catch(err => console.log(err))
+  //     // makeup.getMakeupByTag(product, tagValue)
+  //     //   .then(res => this.displayCategory(res.tagProduct))
+  //     //   .catch(err => console.log(err))
+  //     // makeup.getBoth(product, categoryValue, tagValue)
+  //     //   .then(res => this.displayCategory(res.categoryTagProducts))
+  //     //   .catch(err => console.log(err))
+
+  //     })
+  //   })
+    
+    // const options = [category, tag];
+    // options.forEach(option => {
+    //   option.addEventListener('change', e => {
+    //     const searchTag = e.target.value;
+    //     if(searchTag === 'all'){
+    //       makeup.getMakeup(product)
+    //         .then(res => this.displayCategory(res.products));
+    //         return;
+    //     }
+    //     // makeup.getBoth(product, searchTag, searchTag)
+    //     //   .then(res => this.displayCategory(res.categoryTagProducts))
+    //     //   .catch(err => console.log(err))
+    //     // makeup.getBoth(product, '', searchTag)
+    //     //   .then(res => this.displayCategory(res.categoryTagProducts))
+    //     //   .catch(err => console.log(err))
+    //   })
+    // })
+  //}
+
   displayCategory(categories){
     console.log(categories);
+    if(categories.length === 0){
+      console.log('NO RESULTS FOOUND');
+    }
     let output = '';
     categories.map(category => {
       output += `
@@ -143,6 +204,12 @@ class UI {
     const shortened = text.indexOf('', limit);
     if(shortened == -1)return text;
     return text.substring(0, shortened);
+  }
+
+  showAlert(message){
+    const h2 = document.createElement('h2');
+    h2.appendChild(document.createTextNode(message));
+    document.getElementById('modal-body').appendChild(h2)
   }
 
   closeModal(){

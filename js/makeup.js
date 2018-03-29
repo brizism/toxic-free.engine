@@ -33,4 +33,14 @@ class Makeup {
       console.log(err)
     }
   }
+
+  async getBoth(product_type, product_category, product_tag){
+    try {
+      const productsResponse = await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product_type}&product_category=${product_category}&product_tags=${product_tag}`);
+      const categoryTagProducts = await productsResponse.json();
+      return { categoryTagProducts };
+    } catch(err) {
+      console.log(err)
+    } 
+  }
 }
