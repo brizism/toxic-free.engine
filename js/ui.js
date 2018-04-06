@@ -5,7 +5,7 @@ class UI {
   }
 
   // Display products in UI
-  showMakeup(categories){
+  showAllProducts(categories){
     console.log(categories);
     this.modal.style.display = 'block';
     let output = `
@@ -53,6 +53,7 @@ class UI {
     output += '</div>';
     this.products.innerHTML = output;
 
+    this.getFilterValues(categories[0].product_type);
     this.closeModal();
   }
 
@@ -72,110 +73,41 @@ class UI {
     return allTags;
   }
 
-  getCategoryValue(product){
-    document.getElementById('category').addEventListener('change', e => {
-      const searchTag = e.target.value;
-      if(searchTag === 'all'){
-        makeup.getMakeup(product, searchTag)
-          .then(res => this.displayCategory(res.products))
-          return;
-      }   
-      makeup.getMakeupByCategory(product, searchTag)
-        .then(res => this.displayCategory(res.categoryProduct))
-        .catch(err => console.log(err))
-        return;
-    })
-  }
-
-  getTagValue(product){
-    document.getElementById('tag').addEventListener('change', e => {
-      const searchTag = e.target.value;
-      if(searchTag === 'all'){
-        makeup.getMakeup(product, searchTag)
-          .then(res => this.displayCategory(res.products))
-          return;
-      }
-      makeup.getMakeupByTag(product, searchTag)
-        .then(res => this.displayCategory(res.tagProduct))
-        .catch(err => console.log(err))
-        return;
-    })
-  }
-
-  getBothValues(product){
-    const category = document.getElementById('category');
-    const tag = document.getElementById('tag');
-    category.addEventListener('change', e => {
-      const categoryValue = e.target.value;
-
-      tag.addEventListener('change', e => {
-        const tagValue = e.target.value;
-
-      if(categoryValue === 'all' && tagValue === 'all'){
-        makeup.getMakeup(product)
-          .then(res => this.displayCategory(res.products));
-          return;
-      }
-      makeup.getBoth(product, categoryValue, tagValue)
-        .then(res => this.displayCategory(res.categoryTagProducts))
-        .catch(err => console.log(err))
-        return;
-      })
-    })   
-  }
-
-  // getOptionValues(product){
-  //   const category = document.getElementById('category');
-  //   const tag = document.getElementById('tag');
-
-  //   category.addEventListener('change', e => {
-  //     const categoryValue = e.target.value;
-
-  //     tag.addEventListener('change', e => {
-  //       const tagValue = e.target.value;
-
-  //     if(categoryValue === 'all' && tagValue === 'all'){
-  //       makeup.getMakeup(product)
-  //         .then(res => this.displayCategory(res.products));
-  //         return;
-  //     }
-  //     makeup.getMakeupByCategory(product, categoryValue)
-  //       .then(res => this.displayCategory(res.products))
-  //       .catch(err => console.log(err))
-  //     // makeup.getMakeupByTag(product, tagValue)
-  //     //   .then(res => this.displayCategory(res.tagProduct))
-  //     //   .catch(err => console.log(err))
-  //     // makeup.getBoth(product, categoryValue, tagValue)
-  //     //   .then(res => this.displayCategory(res.categoryTagProducts))
-  //     //   .catch(err => console.log(err))
-
-  //     })
-  //   })
+  getFilterValues(product){
+    const selectCategory = document.getElementById('category');
+    const selectTag = document.getElementById('tag');
     
-    // const options = [category, tag];
-    // options.forEach(option => {
-    //   option.addEventListener('change', e => {
-    //     const searchTag = e.target.value;
-    //     if(searchTag === 'all'){
-    //       makeup.getMakeup(product)
-    //         .then(res => this.displayCategory(res.products));
-    //         return;
-    //     }
-    //     // makeup.getBoth(product, searchTag, searchTag)
-    //     //   .then(res => this.displayCategory(res.categoryTagProducts))
-    //     //   .catch(err => console.log(err))
-    //     // makeup.getBoth(product, '', searchTag)
-    //     //   .then(res => this.displayCategory(res.categoryTagProducts))
-    //     //   .catch(err => console.log(err))
-    //   })
-    // })
-  //}
+    selectCategory.addEventListener('change', e => this.getResponse(product, e.target.value, selectTag.value));
+    selectTag.addEventListener('change', e => this.getResponse(product, selectCategory.value, e.target.value));
+  }
+
+  getResponse(product, categoryValue, tagValue){
+    if(categoryValue === 'all' && tagValue === 'all'){
+      makeup.getMakeup(product)
+        .then(res => this.displayCategory(res.products));
+        return;
+    }
+    if(categoryValue === 'all'){
+      makeup.getMakeupByTag(product, tagValue)
+        .then(res => this.displayCategory(res.tagProduct));
+        return;
+    }
+    if(tagValue === 'all'){
+      makeup.getMakeupByCategory(product, categoryValue)
+        .then(res => this.displayCategory(res.categoryProduct));
+        return;
+    }
+    makeup.getBoth(product, categoryValue, tagValue)
+      .then(res => this.displayCategory(res.categoryTagProducts))
+      .catch(err => console.log(err))
+      return;
+  }
 
   displayCategory(categories){
     console.log(categories);
-    if(categories.length === 0){
-      console.log('NO RESULTS FOOUND');
-    }
+    // if(categories.length === 0){
+    //   console.log('NO RESULTS FOOUND');
+    // }
     let output = '';
     categories.map(category => {
       output += `
