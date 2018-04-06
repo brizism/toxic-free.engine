@@ -43,6 +43,14 @@
         display: flex;
         flex-wrap: wrap;
 
+        h1 {
+          font-size: 2rem;
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%);
+          width: 80%;
+        }
+
         #{ $self }__body {
           position: relative;
           flex: 0 1 50%;
