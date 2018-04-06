@@ -104,10 +104,19 @@ class UI {
   }
 
   displayCategory(categories){
-    console.log(categories);
-    // if(categories.length === 0){
-    //   console.log('NO RESULTS FOOUND');
-    // }
+    //console.log(categories);
+    if(categories.length === 0){
+      const selectCategory = document.getElementById('category');
+      const selectTag = document.getElementById('tag');
+
+      let output = `
+        <div class="products-modal__wrapper">
+          <h1>No product results found for ${selectCategory.value} and ${selectTag.value} at this time.</h1>
+        </div>
+      `;
+      document.getElementById('modal-body').innerHTML = output;
+      return;
+    };
     let output = '';
     categories.map(category => {
       output += `
